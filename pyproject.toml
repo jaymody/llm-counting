@@ -8,7 +8,14 @@ packages = [{include = "llm_counting"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+sympy = "^1.11.1"
 
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.18.0"
+black = "^22.10.0"
+pylint = "^2.15.6"
+isort = "^5.10.1"
 
 [build-system]
 requires = ["poetry-core"]
