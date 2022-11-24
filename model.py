@@ -22,6 +22,14 @@ class Layer:
     def flops_count(self):
         return count(self.flops_dict)
 
+    @property
+    def params_dict(self):
+        raise NotImplementedError()
+
+    @property
+    def params_count(self):
+        return count(self.params_count)
+
     def evaluate(self, *args, **kwargs):
         raise NotImplementedError()
 
@@ -31,11 +39,15 @@ class Embeddings(Layer):
         super().__init__()
         self.l, self.d_model, self.n_vocab = l, d_model, n_vocab
 
-    def evaluate(self):
-        X_word = MatrixSymbol(r"X_{word}", self.l, self.d_model)
-        X_pos = MatrixSymbol(r"X_{pos}", self.l, self.d_model)
 
-        return X_word + X_pos
+
+    def params_dict(self):
+        return {
+            "X_word":
+        }
+
+    def evaluate(self):
+        return self.X_word + self.X_pos
 
     @property
     def flops_dict(self):
